@@ -25,24 +25,45 @@
 
 <body>
 
+	<p>Your time: <span id="time"></span></p>
 
 	<div id="box"> </div>
+
+
 
 	<script type="text/javascript">
 
 
-	document.getElementById("box").onclick=function() {
-		this.style.display="none";
-	}
+		var clickedTime; var createdTime; var reactionTime;
 
-	var time = Math.random()*5000;
+		function makeBox() {
+
+			createdTime = Date.now();
+			var time = Math.random()*5000;
 
 
-	setTimeout(function()) {
+			setTimeout(function() {
 
-	document.getElementById("box").style.display="block";		
+				document.getElementById("box").style.display="block";		
 
-	}, time);
+			}, time);
+
+		}
+
+
+		document.getElementById("box").onclick=function() {
+
+			clickedTime=Date.now();
+
+			reactionTime = (clickedTime-createdTime)/1000;
+			document.getElementById("time").innerHTML = reactionTime;
+			this.style.display="none";
+			makeBox();
+		}
+
+
+		makeBox();
+
 
 	</script>
 
